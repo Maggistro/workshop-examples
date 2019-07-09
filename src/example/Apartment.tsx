@@ -4,6 +4,7 @@ import ProfileShorthand from './ProfileShorthand';
 import ApartmentInterface from '../proptypes/ApartmentType';
 
 const Apartment = (props: ApartmentInterface) =>  {
+
     return (
         <div className="apartment">
             <img alt="dummy" src={props.image}/>
