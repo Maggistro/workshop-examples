@@ -1,4 +1,6 @@
-export default interface InputBoxInterface {
+type InputBoxInterface = {
     children: any,
     title: string,
 }
+
+export default InputBoxInterface;

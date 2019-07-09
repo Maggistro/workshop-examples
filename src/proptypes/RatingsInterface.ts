@@ -1,3 +1,5 @@
-export default interface Ratings {
+type Rating = {
     rating: number,
 }
+
+export default Rating

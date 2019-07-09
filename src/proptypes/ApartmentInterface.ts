@@ -1,8 +1,10 @@
 import ProfileShorthandInterface from './ProfileShorthandInterface';
 
-export default interface Apartment {
+type Apartment = {
     image: string,
     rating: number,
     description: string,
     profileInformation: ProfileShorthandInterface
 }
+
+export default Apartment;
