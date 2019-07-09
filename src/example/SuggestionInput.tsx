@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import React, { Component } from 'react';
 
 class SuggestionInput extends Component <{}> {
     state = {

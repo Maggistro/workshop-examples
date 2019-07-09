@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import InputBoxInterface from '../proptypes/InputBoxInterface';
 
-const InputBox: FC<InputBoxInterface> = (props) => {
+const InputBox = (props: InputBoxInterface) => {
     return (
         <div>
             <span>{props.title}</span>
@@ -9,3 +9,5 @@ const InputBox: FC<InputBoxInterface> = (props) => {
         </div>
     );
 }
+
+export default InputBox;
