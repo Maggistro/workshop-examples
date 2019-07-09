@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Ratings from './Ratings';
 import ProfileShorthand from './ProfileShorthand';
-import ApartmentInterface from '../proptypes/ApartmentType';
+import ApartmentType from '../proptypes/ApartmentType';
+import WithTranslationType from '../proptypes/WithTranslationType';
+import withTranslation from '../hoc/withTranslation';
 
-const Apartment = (props: ApartmentInterface) =>  {
+class Apartment extends Component<ApartmentType & WithTranslationType, {}> {
+    static defaultProps = {
+        rating: 0,
+    }
 
-    return (
-        <div className="apartment">
-            <img alt="dummy" src={props.image}/>
-            <Ratings rating={props.rating} />
-            <p>{props.description}</p>
-            <ProfileShorthand {...props.profileInformation}/>
-        </div>
-    )
+    render() {
+        return (
+            <div className="apartment">
+                <img alt="dummy" src={this.props.image}/>
+                <Ratings rating={this.props.rating} />
+                <p>{this.props.t(this.props.description)}</p>
+                <ProfileShorthand {...this.props.profileInformation}/>
+            </div>
+        )
+    }
 }
 
-export default Apartment;
+export default withTranslation<ApartmentType & WithTranslationType>(Apartment);

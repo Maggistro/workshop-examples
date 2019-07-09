@@ -2,7 +2,7 @@ import ApartmentInterface from "../proptypes/ApartmentType";
 
 const ApartmentFixtures = {
     image: 'dummy',
-    rating: 5,
+    description: 'dummy',
     profileInformation: {
         image: 'profile',
         name: 'test',
