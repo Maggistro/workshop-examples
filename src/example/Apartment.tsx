@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
 import Ratings from './Ratings';
 import ProfileShorthand from './ProfileShorthand';
+import ApartmentInterface from '../proptypes/ApartmentInterface';
+import { tsPropertySignature } from '@babel/types';
 
-const Apartment: FC = () =>  {
+const Apartment: FC<ApartmentInterface> = (props) =>  {
     return (
         <div className="apartment">
-            <img alt="dummy" src="dummy"/>
-            <Ratings/>
+            <img alt="dummy" src={props.image}/>
+            <Ratings rating={props.rating} />
             <p>Blabla</p>
-            <ProfileShorthand/>>
+            <ProfileShorthand {...props.profileInformation}/>
         </div>
     )
 }
