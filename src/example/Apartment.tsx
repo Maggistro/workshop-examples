@@ -9,7 +9,7 @@ const Apartment: FC<ApartmentInterface> = (props) =>  {
         <div className="apartment">
             <img alt="dummy" src={props.image}/>
             <Ratings rating={props.rating} />
-            <p>Blabla</p>
+            <p>{props.description}</p>
             <ProfileShorthand {...props.profileInformation}/>
         </div>
     )
