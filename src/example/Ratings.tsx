@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import RatingsInterface from '../proptypes/RatingsInterface';
 
-const Ratings: FC<RatingsInterface> = () => {
+const Ratings = (props: RatingsInterface) => {
     return (
         <div>
             ratingstars

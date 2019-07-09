@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ProfileShorthandInterface from '../proptypes/ProfileShorthandInterface';
 
-const ProfileShorthand: FC<ProfileShorthandInterface> = () => {
+const ProfileShorthand = (props: ProfileShorthandInterface) => {
     return (
         <div>
             <img alt="profile" src="profile-image"/>
