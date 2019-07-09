@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
+import InputBoxInterface from '../proptypes/InputBoxInterface';
 
-const InputBox: FC = () => {
+const InputBox: FC<InputBoxInterface> = (props) => {
     return (
         <div>
-            <span>Wo</span>
-            <input/>
+            <span>{props.title}</span>
+            {props.children}
         </div>
     );
 }
