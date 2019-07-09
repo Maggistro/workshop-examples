@@ -1,4 +1,4 @@
-import ApartmentInterface from "../proptypes/ApartmentInterface";
+import ApartmentInterface from "../proptypes/ApartmentType";
 
 const ApartmentFixtures = {
     image: 'dummy',

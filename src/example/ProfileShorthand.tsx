@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileShorthandInterface from '../proptypes/ProfileShorthandInterface';
+import ProfileShorthandInterface from '../proptypes/ProfileShorthandType';
 
 const ProfileShorthand = (props: ProfileShorthandInterface) => {
     return (

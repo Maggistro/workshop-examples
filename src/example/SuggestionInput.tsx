@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
-class SuggestionInput extends Component <{}> {
-    state = {
-        highlightedInput: "",
-    }
+const initialState = Object.freeze({ highlightedInput: "" });
+
+type State = typeof initialState;
+
+
+class SuggestionInput extends Component<{}, State> {
+    readonly state = initialState;
 
     render() {
         return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import RatingsInterface from '../proptypes/RatingsInterface';
+import RatingsType from '../proptypes/RatingsType';
 
-const Ratings = (props: RatingsInterface) => {
+const Ratings = (props: RatingsType) => {
     return (
         <div>
             ratingstars

@@ -1,7 +1,7 @@
 import React from 'react';
 import Ratings from './Ratings';
 import ProfileShorthand from './ProfileShorthand';
-import ApartmentInterface from '../proptypes/ApartmentInterface';
+import ApartmentInterface from '../proptypes/ApartmentType';
 
 const Apartment = (props: ApartmentInterface) =>  {
     return (

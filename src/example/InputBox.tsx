@@ -1,5 +1,5 @@
 import React from 'react';
-import InputBoxInterface from '../proptypes/InputBoxInterface';
+import InputBoxInterface from '../proptypes/InputBoxType';
 
 const InputBox = (props: InputBoxInterface) => {
     return (
