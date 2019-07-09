@@ -5,16 +5,10 @@ class SuggestionInput extends Component <{}> {
         highlightedInput: "",
     }
 
-    handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            highlightedInput: `<b>${e.currentTarget.value}</b>`
-        })
-    }
-
     render() {
         return (
             <>
-                <input value={this.state.highlightedInput} onChange={this.handleChange}/>
+                <input value={this.state.highlightedInput}/>
             </>
         )
     }
