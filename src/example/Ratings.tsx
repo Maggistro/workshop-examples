@@ -4,7 +4,7 @@ import RatingsType from '../proptypes/RatingsType';
 const Ratings = (props: RatingsType) => {
     return (
         <div>
-            ratingstars
+            {props.rating}
         </div>
     )
 }
