@@ -1,16 +1,17 @@
-import React, { useState, ChangeEvent, forwardRef } from 'react';
+import React, { useState, ChangeEvent, forwardRef, useContext } from 'react';
 import SuggestionInputType, {HighlightRefType} from '../proptypes/SuggestionInputType';
 import withTranslation from '../hoc/withTranslation';
 import withTranslationType from '../proptypes/WithTranslationType';
-
+import ThemeContext from '../context/ThemeContext';
 
 const SuggestionInput = (props: SuggestionInputType & withTranslationType) => {
 
     const [highlightedInput, setHighlightedInput] = useState('');
+    const theme = useContext(ThemeContext);
 
     const renderHighlight = function(content: string) {
         return (
-            <div ref={props.innerRef} tabIndex={0} >
+            <div ref={props.innerRef} tabIndex={0} className={theme} >
                 { content.length >= 3 && <b>{props.t(content)}</b> }
             </div>
         );
