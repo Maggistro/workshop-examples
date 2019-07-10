@@ -22,4 +22,4 @@ class Apartment extends Component<ApartmentType & WithTranslationType, {}> {
     }
 }
 
-export default withTranslation<ApartmentType & WithTranslationType>(Apartment);
+export default withTranslation<Apartment, ApartmentType>(Apartment);

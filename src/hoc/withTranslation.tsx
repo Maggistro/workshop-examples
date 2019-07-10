@@ -1,22 +1,42 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType, Component, RefObject, forwardRef } from 'react';
 import withTranslationType from '../proptypes/WithTranslationType';
 
 const translations = new Map<string, string>()
 translations.set('dummy', 'dummy translated');
 
-const withTranslation = <T extends {}>(WrappedComponent: ComponentType<T>) => {
+const withTranslation = <RefType, OriginalProps>(
+    WrappedComponent: ComponentType<OriginalProps & withTranslationType>
+    ) => {
 
-    const translate = (key: string) => {
-        return translations.has(key) ? translations.get(key) : `missing_${key}`;
+    type PrivateProps = {forwardedRef: RefObject<RefType>};
+
+    type Props = OriginalProps & PrivateProps;
+
+    class Translation extends Component<Props> {
+        translate = (key: string) => {
+            return translations.has(key) ? translations.get(key) : `missing_${key}`;
+        };
+
+        render() {
+            const {
+                forwardedRef,
+                ...restProps
+            } = this.props as PrivateProps;
+
+            return (
+                <WrappedComponent
+                    t={this.translate}
+                    ref={forwardedRef}
+                    {...restProps as OriginalProps} />
+            )
+        }
     }
 
-    return (props: Omit<T, keyof withTranslationType>) => {
-        return (
-            <WrappedComponent
-                t={translate}
-                {...props as T} />
-        )
-    }
+    const RefForwardingFactory = (props: Readonly<Props>, ref: RefType) => (
+        <Translation {...props} forwardedRef={ref}/>
+    )
+
+    return forwardRef<RefType, OriginalProps>(RefForwardingFactory as any)
 }
 
-export default withTranslation;
+export default withTranslation
