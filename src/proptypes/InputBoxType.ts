@@ -1,5 +1,5 @@
 type InputBox = {
-    children: (className: string) => JSX.Element,
+    children: any,
     title: string,
 }
 

@@ -22,20 +22,14 @@ const SearchInput = () => {
     return (
         <div>
             <InputBox title="test">
-                {(className) =>
                 <SuggestionInput
-                    className={className}
                     handleFocus={() => handleFocus('first')}
                     ref={suggestionRefs.first}/>
-                }
             </InputBox>
             <InputBox title="test">
-                {(className) =>
                 <SuggestionInput
-                    className={className}
                     handleFocus={() => handleFocus('second')}
                     ref={suggestionRefs.second}/>
-                }
             </InputBox>
         </div>
     )
