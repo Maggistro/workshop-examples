@@ -1,4 +1,4 @@
-import React, { ComponentType, Component, RefObject, forwardRef } from 'react';
+import React, { ComponentType, Component, forwardRef, Ref } from 'react';
 import withTranslationType from '../proptypes/WithTranslationType';
 
 const translations = new Map<string, string>()
@@ -8,7 +8,7 @@ const withTranslation = <RefType, OriginalProps>(
     WrappedComponent: ComponentType<OriginalProps & withTranslationType>
     ) => {
 
-    type PrivateProps = {forwardedRef: RefObject<RefType>};
+    type PrivateProps = {forwardedRef: Ref<RefType>};
 
     type Props = OriginalProps & PrivateProps;
 
@@ -32,11 +32,10 @@ const withTranslation = <RefType, OriginalProps>(
         }
     }
 
-    const RefForwardingFactory = (props: Readonly<Props>, ref: RefType) => (
-        <Translation {...props} forwardedRef={ref}/>
+    return forwardRef<RefType, OriginalProps>(
+        (props: Readonly<OriginalProps>, ref: Ref<RefType>) =>
+            <Translation {...props} forwardedRef={ref} />
     )
-
-    return forwardRef<RefType, OriginalProps>(RefForwardingFactory as any)
 }
 
 export default withTranslation
