@@ -1,35 +1,31 @@
-import React, { Component, ChangeEvent, createRef } from 'react';
+import React, { Component, ChangeEvent, forwardRef } from 'react';
+import SuggestionInputType, {HighlightRefType} from '../proptypes/SuggestionInputType';
 
 const initialState = Object.freeze({ highlightedInput: "" });
 
 type State = typeof initialState;
 
 
-class SuggestionInput extends Component<{}, State> {
+class SuggestionInput extends Component<SuggestionInputType, State> {
     readonly state = initialState;
 
-    highlightRef = createRef<HTMLDivElement>();
+    static defaultProps = {
+        innerRef: null,
+    }
 
     renderHighlight = (content: string) => {
         return (
-            <div ref={this.highlightRef} tabIndex={0} >
+            <div ref={this.props.innerRef} tabIndex={0} >
                 { content.length >= 3 && <b>{content}</b> }
             </div>
         );
-    }
-
-    componentDidUpdate() {
-        const hightlightDiv = this.highlightRef.current;
-
-        if (hightlightDiv) {
-            hightlightDiv.focus();
-        }
     }
 
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             highlightedInput: e.currentTarget.value,
         });
+        this.props.handleFocus();
     }
 
     render() {
@@ -42,4 +38,6 @@ class SuggestionInput extends Component<{}, State> {
     }
 }
 
-export default SuggestionInput;
+export default forwardRef<HighlightRefType, Omit<SuggestionInputType, 'innerRef'>>(
+        (props, ref) => <SuggestionInput innerRef={ref} {...props} />
+    );

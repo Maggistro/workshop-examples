@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { createRef} from 'react';
 import SuggestionInput from './SuggestionInput';
 import InputBox from './InputBox';
 
 const SearchInput = () => {
 
-    const handleFocus = () => {
-        //TODO: Set focus of suggestion inputs
+    const suggestionRefs = {
+        first: createRef<HTMLDivElement>(),
+        second: createRef<HTMLDivElement>(),
+    };
+
+    const handleFocus = (input: 'first'|'second') => {
+        if (suggestionRefs.first.current && suggestionRefs.second.current) {
+            if (input === 'first') {
+                suggestionRefs.second.current.focus();
+            } else {
+                suggestionRefs.first.current.focus();
+            }
+        }
     }
 
-    return(
+    return (
         <div>
             <InputBox title="test">
-                <SuggestionInput/>
+                <SuggestionInput
+                    handleFocus={() => handleFocus('first')}
+                    ref={suggestionRefs.first}/>
             </InputBox>
             <InputBox title="test">
-                <SuggestionInput/>
+                <SuggestionInput
+                    handleFocus={() => handleFocus('second')}
+                    ref={suggestionRefs.second}/>
             </InputBox>
         </div>
     )
