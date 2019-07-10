@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import React, { Component, ChangeEvent, createRef } from 'react';
 
 const initialState = Object.freeze({ highlightedInput: "" });
 
@@ -8,18 +8,35 @@ type State = typeof initialState;
 class SuggestionInput extends Component<{}, State> {
     readonly state = initialState;
 
+    highlightRef = createRef<HTMLDivElement>();
+
+    renderHighlight = (content: string) => {
+        return (
+            <div ref={this.highlightRef} tabIndex={0} >
+                { content.length >= 3 && <b>{content}</b> }
+            </div>
+        );
+    }
+
+    componentDidUpdate() {
+        const hightlightDiv = this.highlightRef.current;
+
+        if (hightlightDiv) {
+            hightlightDiv.focus();
+        }
+    }
 
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
-            highlightedInput: `<b>${e.currentTarget.value}</b>`
-        })
+            highlightedInput: e.currentTarget.value,
+        });
     }
 
     render() {
         return (
             <>
                 <input onChange={this.handleChange}/>
-                <div dangerouslySetInnerHTML={{__html: this.state.highlightedInput}}></div>
+                {this.renderHighlight(this.state.highlightedInput)}
             </>
         )
     }
