@@ -3,11 +3,13 @@ import SuggestionInput from './SuggestionInput';
 import InputBox from './InputBox';
 
 const SearchInput = () => {
+
+    const handleFocus = () => {
+        //TODO: Set focus of suggestion inputs
+    }
+
     return(
         <div>
-            <InputBox title="test">
-                <SuggestionInput/>
-            </InputBox>
             <InputBox title="test">
                 <SuggestionInput/>
             </InputBox>
