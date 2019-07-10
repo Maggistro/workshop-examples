@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent, forwardRef } from 'react';
+import React, { useState, ChangeEvent, forwardRef } from 'react';
 import SuggestionInputType, {HighlightRefType} from '../proptypes/SuggestionInputType';
 import withTranslation from '../hoc/withTranslation';
 import withTranslationType from '../proptypes/WithTranslationType';
@@ -8,36 +8,29 @@ const initialState = Object.freeze({ highlightedInput: "" });
 type State = typeof initialState;
 
 
-class SuggestionInput extends Component<SuggestionInputType & withTranslationType, State> {
-    readonly state = initialState;
+const SuggestionInput = (props: SuggestionInputType & withTranslationType) => {
 
-    static defaultProps = {
-        innerRef: null,
-    }
+    const [highlightedInput, setHighlightedInput] = useState('');
 
-    renderHighlight = (content: string) => {
+    const renderHighlight = function(content: string) {
         return (
-            <div ref={this.props.innerRef} tabIndex={0} >
-                { content.length >= 3 && <b>{this.props.t(content)}</b> }
+            <div ref={props.innerRef} tabIndex={0} >
+                { content.length >= 3 && <b>{props.t(content)}</b> }
             </div>
         );
     }
 
-    handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            highlightedInput: e.currentTarget.value,
-        });
-        this.props.handleFocus();
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setHighlightedInput(e.currentTarget.value);
+        props.handleFocus();
     }
 
-    render() {
-        return (
-            <>
-                <input onChange={this.handleChange}/>
-                {this.renderHighlight(this.state.highlightedInput)}
-            </>
-        )
-    }
+    return (
+        <>
+            <input onChange={handleChange}/>
+            {renderHighlight(highlightedInput)}
+        </>
+    )
 }
 
 export default withTranslation<HighlightRefType, Omit<SuggestionInputType, 'innerRef'>>(
