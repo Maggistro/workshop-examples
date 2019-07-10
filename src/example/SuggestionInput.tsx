@@ -3,10 +3,6 @@ import SuggestionInputType, {HighlightRefType} from '../proptypes/SuggestionInpu
 import withTranslation from '../hoc/withTranslation';
 import withTranslationType from '../proptypes/WithTranslationType';
 
-const initialState = Object.freeze({ highlightedInput: "" });
-
-type State = typeof initialState;
-
 
 const SuggestionInput = (props: SuggestionInputType & withTranslationType) => {
 
