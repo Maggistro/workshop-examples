@@ -5,7 +5,7 @@ const InputBox = (props: InputBoxInterface) => {
     return (
         <div>
             <span>{props.title}</span>
-            {props.children}
+            {props.children("myInput")}
         </div>
     );
 }
