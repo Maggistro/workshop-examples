@@ -19,14 +19,12 @@ const SuggestionInput = (props: SuggestionInputType & withTranslationType) => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setHighlightedInput(e.currentTarget.value);
-        console.log(e.currentTarget.value);
         props.handleFocus();
     }
 
     return (
         <>
             <input onChange={handleChange}/>
-            {highlightedInput}
             {renderHighlight(highlightedInput)}
         </>
     )

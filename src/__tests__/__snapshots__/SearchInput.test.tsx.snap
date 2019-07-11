@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for SearchInput should render the complete tree 1`] = `"<div><span>test</span><input><div tabindex=\\"0\\" class=\\"dummy\\"></div></div><div><span>test</span><input><div tabindex=\\"0\\" class=\\"dummy\\"></div></div>"`;

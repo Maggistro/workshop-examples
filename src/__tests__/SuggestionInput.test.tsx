@@ -16,7 +16,7 @@ describe('Test for SuggestionInput', () => {
   it('Should call focus handler', () => {
     const handleFocus = jest.fn();
     const suggestion = shallow(<SuggestionInput handleFocus={handleFocus} innerRef={null} t={jest.fn()}/>);
-    suggestion.find('input').simulate('change', getDummyEvent(''));
+    suggestion.find('input').simulate('change', getDummyEvent('test'));
 
     expect(handleFocus).toBeCalledTimes(1);
   })
@@ -28,7 +28,6 @@ describe('Test for SuggestionInput', () => {
     expect(suggestion.find('b').exists()).toBe(false);
 
     suggestion.find('input').simulate('change', getDummyEvent('test'));
-    console.log(suggestion.html());
     expect(suggestion.find('b').exists()).toBe(true);
     expect(suggestion.find('b').text()).toBe('test');
   })
