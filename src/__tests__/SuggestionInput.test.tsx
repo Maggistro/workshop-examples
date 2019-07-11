@@ -1,7 +1,6 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import {SuggestionInput} from '../example/SuggestionInput';
-import {act} from 'react-dom/test-utils';
 
 
 const getDummyEvent = (value: string) => {
