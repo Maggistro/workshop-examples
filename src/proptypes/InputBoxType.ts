@@ -1,5 +1,7 @@
+import { ReactElement } from "react";
+
 type InputBox = {
-    children: any,
+    children: ReactElement,
     title: string,
 }
 
